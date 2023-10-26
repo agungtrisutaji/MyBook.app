@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Tilt Neon', sans-serif;
+  background-color: #e0f2f1;
+  color: #333;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.head_bar {
+  background-color: #f06292;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.head_bar__title {
+  font-size: 1.8rem;
+}
+
+main {
+  width: 60vw;
+  margin: 2rem;
+  padding: 2rem;
+  background-color: #f9fbe7;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: url(img/paper-bg.jpg);
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+.isi {
+  background-size: cover;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+label {
+  flex: 1;
+  font-weight: 600;
+}
+.input {
+  display: flex;
+}
+
+input,
+button {
+  flex: 2;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type='checkbox'] {
+  flex: 2;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  flex: 1;
+  background-color: #f06292;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #d81b60;
+}
+
+.book_shelf {
+  padding: 0;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #f06292;
+}
+
+.undo-button {
+  margin-right: 5px;
+}
+
+.book_list {
+  min-height: 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.item {
+  background: rgba(161, 161, 161, 0.5);
+  padding: 5px;
+}
+
+.item button {
+  margin: 5px;
+}
+
+@media (max-width: 768px) {
+  main {
+    width: 80vw;
+    padding: 1rem 0.5rem;
+  }
+
+  section {
+    padding: 1rem;
+  }
+
+  label,
+  input,
+  button {
+    flex: 100%;
+  }
+}
