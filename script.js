@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function addBook() {
   const bookTitle = document.getElementById('inputBookTitle').value;
   const bookAuthor = document.getElementById('inputBookAuthor').value;
-  const bookYear = document.getElementById('inputBookYear').value;
+  const bookYear = parseInt(document.getElementById('inputBookYear').value);
   const bookComplete = document.getElementById('inputBookIsComplete').checked;
 
   const generatedID = generateId();
@@ -39,7 +39,13 @@ function addBook() {
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 
-  alert('Buku berhasil ditambahkan!');
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Buku sudah ditambahkan',
+    showConfirmButton: false,
+    timer: 1500,
+  });
 }
 
 function generateId() {
@@ -81,7 +87,13 @@ function searchBooks() {
     book.title.toLowerCase().includes(searchTitle)
   );
   if (filteredBooks.length === 0) {
-    alert('Buku tidak ditemukan!');
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Buku tidak ditemukan',
+      showConfirmButton: false,
+      timer: 1500,
+    });
   }
   renderBooks(filteredBooks);
 }
@@ -136,13 +148,19 @@ function showBook(bookObject) {
     deleteButton.innerText = 'Hapus';
 
     deleteButton.addEventListener('click', function () {
-      const confirmation = window.confirm('Ingin menghapus buku?');
-      if (confirmation) {
-        removeBook(bookObject.id);
-        alert('Buku berhasil di HAPUS!');
-      } else {
-        alert('Terimaksih!');
-      }
+      Swal.fire({
+        title: 'Kamu yakin?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Hapus!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          removeBook(bookObject.id);
+          Swal.fire('Dihapus!', 'Buku sudah dihapus.');
+        }
+      });
     });
 
     container.append(undoButton, deleteButton);
@@ -161,13 +179,19 @@ function showBook(bookObject) {
     deleteButton.innerText = 'Hapus';
 
     deleteButton.addEventListener('click', function () {
-      const confirmation = window.confirm('Ingin menghapus buku?');
-      if (confirmation) {
-        removeBook(bookObject.id);
-        alert('Buku berhasil di HAPUS!');
-      } else {
-        alert('Terimakasih!');
-      }
+      Swal.fire({
+        title: 'Kamu yakin?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Hapus!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          removeBook(bookObject.id);
+          Swal.fire('Dihapus!', 'Buku sudah dihapus.');
+        }
+      });
     });
 
     container.append(checkButton, deleteButton);
